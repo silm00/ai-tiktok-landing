@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok OAuth Callback</title>
+<style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 20px}code{background:#f4f4f4;padding:2px 6px;border-radius:4px;word-break:break-all}</style></head>
+<body>
+<h1>TikTok OAuth Callback</h1>
+<p id="msg">Reading authorization code...</p>
+<p>Code: <code id="code">-</code></p>
+<script>
+const p = new URLSearchParams(location.search);
+const code = p.get('code'), err = p.get('error');
+document.getElementById('code').textContent = code || err || '(none)';
+document.getElementById('msg').textContent = code
+  ? 'Copy this code into your uploader to exchange for access token.'
+  : 'No code found. Start OAuth flow from TikTok developer dashboard.';
+</script>
+</body></html>
